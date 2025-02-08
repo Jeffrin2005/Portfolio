@@ -5,31 +5,31 @@ const OpenSourceContributions = () => {
   const pullRequests = [
     {
       organization: "OHC Network",
-      description: "Fixed scroll issue in Shifting and Resource",
+      description: <b style={{ color: '#FFFFFF', fontSize: '18px' }}  >Fixed scroll issue in Shifting and Resource</b>, 
       link: "https://github.com/ohcnetwork/care_fe/pull/10104",
       techStack: ["React", "TypeScript"]
     },
     {
       organization: "OHC Network",
-      description: "Fixed Facility Organization Dropdown",
+      description: <b style={{ fontSize: '18px' }}  >Fixed Facility Organization Dropdown</b>,
       link: "https://github.com/ohcnetwork/care_fe/pull/10104",
       techStack: ["React", "TypeScript"]
     },
     {
       organization: "OHC Network",
-      description: "Fixed Profile Syncing",
+      description: <b style={{ fontSize: '18px' }}  >Fixed Profile Syncing</b>,
       link: "https://github.com/ohcnetwork/care_fe/pull/9994",
       techStack: ["React", "JavaScript"]
     },
     {
       organization: "OHC Network",
-      description: "Fixed Search Bar Reset",
+      description: <b style={{ fontSize: '18px' }}  >Fixed Search Bar Reset</b>,
       link: "https://github.com/ohcnetwork/care_fe/pull/9867",
       techStack: ["React", "TypeScript"]
     },
     {
       organization: "OHC Network",
-      description: "Fixed hover cursor in encounters",
+      description: <b style={{ fontSize: '18px' }}  >Fixed hover cursor in encounters</b>,
       link: "https://github.com/ohcnetwork/care_fe/pull/9891",
       techStack: ["React", "TypeScript"]
     }
@@ -38,31 +38,32 @@ const OpenSourceContributions = () => {
   const issues = [
     {
       organization: "OHC Network",
-      description: "Exploited XSS Vulnerability in Encounter Comment Section",
+      description: <b style={{ color: '#FFFFFF', fontSize: '18px' }}>Exploited XSS Vulnerability in Encounter Comment Section</b>,
+
       link: "https://github.com/ohcnetwork/care_fe/issues/10430",
       techStack: ["Security", "React"]
     },
     {
       organization: "OHC Network",
-      description: "Enhance Facility Organization Dropdown Experience",
+      description: <b style={{ fontSize: '18px' }}  >Enhance Facility Organization Dropdown Experience</b>,
       link: "https://github.com/ohcnetwork/care_fe/issues/10060",
       techStack: ["UX", "React"]
     },
     {
       organization: "OHC Network",
-      description: "Profile Not Syncing with Sidebar Navigation",
+      description: <b style={{ fontSize: '18px' }}  >Profile Not Syncing with Sidebar Navigation</b>,
       link: "https://github.com/ohcnetwork/care_fe/issues/9960",
       techStack: ["React", "State Management"]
     },
     {
       organization: "OHC Network",
-      description: "Search Bar Fails to Reset When Navigating Between Tabs",
+      description: <b style={{ fontSize: '18px' }}  >Search Bar Fails to Reset When Navigating Between Tabs</b>,
       link: "https://github.com/ohcnetwork/care_fe/issues/9845",
       techStack: ["React", "TypeScript"]
     },
     {
       organization: "OHC Network",
-      description: "Cursor Issue: Pointer Active Throughout Encounter Section",
+      description: <b style={{ fontSize: '18px' }}  >Cursor Issue: Pointer Active Throughout Encounter Section</b>,
       link: "https://github.com/ohcnetwork/care_fe/issues/9886",
       techStack: ["CSS", "UX"]
     }
