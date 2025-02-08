@@ -7,7 +7,7 @@ const Projects = () => {
       title: 'AI Summarizer',
       description: 'Transforms lengthy explanations into brief, precise summaries. This tool is built using Node.js, TailwindCSS, and Redux Toolkit for efficient API management. EssenceAI fetches data through the RapidAPI interface, utilizing an API key for secure transactions.',
       techStack: ['React', 'Tailwind CSS'],
-      githubLink: 'https://github.com/YourUsername/react-project',
+      githubLink: 'https://github.com/Jeffrin2005/Article-Summarizer',
       icon: <FaReact className="text-6xl text-[#61DAFB] group-hover:text-[#61DAFB] transition-all duration-300 transform group-hover:scale-110" />,
       hoverColor: 'hover:shadow-[0_0_30px_rgba(97,218,251,0.3)]',
       gradientFrom: 'from-[rgba(97,218,251,0.1)]',
