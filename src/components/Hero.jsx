@@ -42,7 +42,7 @@ const Hero = ({ competitiveProgrammingRef }) => {
               <ReactTyped 
                 className='md:text-5xl sm:text-4xl text-xl font-bold md:pl-4 pl-2 text-[#FF3072]
                           drop-shadow-[0_0_8px_rgba(255,48,114,0.5)]'
-                strings={['DSA', 'OPEN SOURCE', 'MERN STACK', 'JEFFRIN2005']}
+                strings={['DSA', 'OPEN SOURCE', 'MERN STACK']}
                 typeSpeed={120}
                 backSpeed={140}
                 loop
