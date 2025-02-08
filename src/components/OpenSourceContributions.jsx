@@ -6,7 +6,7 @@ const OpenSourceContributions = () => {
     {
       organization: "OHC Network",
       description: <b style={{ color: '#FFFFFF', fontSize: '18px' }}  >Fixed scroll issue in Shifting and Resource</b>, 
-      link: "https://github.com/ohcnetwork/care_fe/pull/10104",
+      link: "https://github.com/ohcnetwork/care_fe/pull/9475",
       techStack: ["React", "TypeScript"]
     },
     {
