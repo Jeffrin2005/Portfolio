@@ -31,7 +31,7 @@ const Hero = ({ competitiveProgrammingRef }) => {
             
             <h1 className='md:text-6xl sm:text-5xl text-4xl font-bold md:py-6 text-white
                          drop-shadow-[0_0_12px_rgba(255,48,114,0.6)]'>
-              Hi, I'm Jeffrin
+              Hi, I'm Jeffrin Jojo
             </h1>
             
             <div className='flex justify-center items-center flex-wrap'>
