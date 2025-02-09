@@ -14,6 +14,16 @@ const Projects = () => {
       buttonColor: 'bg-[#61DAFB] hover:bg-[#4fa8c2]'
     },
     {
+      title: 'File-X-change',
+      description: 'A modern file-sharing application built with React, Tailwind CSS, and Vite for a fast and responsive frontend, and Node.js with Express for a robust backend. The application allows users to upload files, generate shareable links, and download files securely.',
+      techStack: ['React', 'Tailwind CSS'],
+      githubLink: 'https://github.com/Jeffrin2005/File-X-change',
+      icon: <FaReact className="text-6xl text-[#61DAFB] group-hover:text-[#61DAFB] transition-all duration-300 transform group-hover:scale-110" />,
+      hoverColor: 'hover:shadow-[0_0_30px_rgba(97,218,251,0.3)]',
+      gradientFrom: 'from-[rgba(97,218,251,0.1)]',
+      buttonColor: 'bg-[#61DAFB] hover:bg-[#4fa8c2]'
+    }, 
+    {
       title: 'Django WeatherApp',
       description: 'WeatherApp is a Django backend that fetches real-time weather data for cities globally using external APIs and an API key for secure data retrieval.',
       techStack: ['Django', 'Python', 'PostgreSQL'],
@@ -23,16 +33,8 @@ const Projects = () => {
       gradientFrom: 'from-[rgba(97,218,251,0.1)]',
       buttonColor: 'bg-[#61DAFB] hover:bg-[#4fa8c2]'
     },
-    {
-      title: 'Tiny URL Generator',
-      description: 'A Tiny URL generator built with Node.js, MongoDB, Bootstrap, and Express.It features a user-friendly interface created with Bootstrap, backed by a powerful Node.js and Express server, and uses MongoDB for efficient data storage and retrieval.',
-      techStack: ['React', 'Tailwind CSS'],
-      githubLink: 'https://github.com/Jeffrin2005/Tiny_URL',
-      icon: <FaReact className="text-6xl text-[#61DAFB] group-hover:text-[#61DAFB] transition-all duration-300 transform group-hover:scale-110" />,
-      hoverColor: 'hover:shadow-[0_0_30px_rgba(97,218,251,0.3)]',
-      gradientFrom: 'from-[rgba(97,218,251,0.1)]',
-      buttonColor: 'bg-[#61DAFB] hover:bg-[#4fa8c2]'
-    }
+  
+    
   ];
 
   return (
