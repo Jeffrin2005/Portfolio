@@ -57,9 +57,10 @@ const Hero = ({ competitiveProgrammingRef }) => {
             
             <button 
               onClick={scrollToCompetitiveProgramming} 
-              className='bg-[#FF3072] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-white
-                       shadow-[0_0_20px_rgba(255,48,114,0.3)] hover:shadow-[0_0_30px_rgba(255,48,114,0.5)]
-                       transition-all duration-300 transform hover:scale-105 neon-edge'
+              className='bg-transparent border-2 border-[#FF3072] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-white
+              shadow-[0_0_20px_rgba(255,48,114,0.3)] hover:shadow-[0_0_30px_rgba(255,48,114,0.5)]
+              transition-all duration-300 transform hover:scale-105 neon-edge hover:bg-[#FF3072]/10'
+            
             >
               Get Started
             </button>
