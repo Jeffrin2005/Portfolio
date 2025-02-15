@@ -84,7 +84,7 @@ const CustomCursor = ({ position, isAttacking }) => (
 
 const Bird = ({ position, rotation }) => (
   <div 
-    className="fixed w-6 h-6 transition-transform z-30 pointer-events-none"
+    className="fixed w-6 h-6 transition-transform z-50 pointer-events-none"
     style={{
       top: position,
       left: '50%',
@@ -99,7 +99,7 @@ const Bird = ({ position, rotation }) => (
 
 const Obstacle = ({ position, height, isTop }) => (
   <div 
-    className="fixed w-5 bg-[#00FF8C]/40 backdrop-blur-sm pointer-events-none z-25"
+    className="fixed w-5 bg-[#00FF8C]/40 backdrop-blur-sm pointer-events-none z-40"
     style={{
       left: position,
       top: isTop ? 0 : 'auto',
@@ -133,6 +133,7 @@ const Hero = ({ competitiveProgrammingRef }) => {
   const [isAttacking, setIsAttacking] = useState(false);
   const [score, setScore] = useState(0);
   const [clickEffects, setClickEffects] = useState([]);
+  const [showGame, setShowGame] = useState(false);
 
   const [birdPos, setBirdPos] = useState(300);
   const [birdVelocity, setBirdVelocity] = useState(0);
@@ -246,11 +247,12 @@ const Hero = ({ competitiveProgrammingRef }) => {
   }, []);
 
   const handleMouseDown = (e) => {
+    if (!showGame) return;
     setIsAttacking(true);
     
     if (!isGameActive) {
       setScore(0);
-      setGameSpeed(3); 
+      setGameSpeed(3);
       setIsGameActive(true);
       setBirdPos(window.innerHeight / 2);
       setBirdVelocity(0);
@@ -271,6 +273,15 @@ const Hero = ({ competitiveProgrammingRef }) => {
     }, 1000);
   };
 
+  const toggleGame = () => {
+    setShowGame(prev => !prev);
+    if (isGameActive) {
+      setIsGameActive(false);
+      setScore(0);
+      setObstacles([]);
+    }
+  };
+
   const scrollToCompetitiveProgramming = () => {
     competitiveProgrammingRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -284,29 +295,21 @@ const Hero = ({ competitiveProgrammingRef }) => {
     >
       <RotatingLines />
       <ArrowShots />
-      {!isGameActive && !showRestartMessage && (
-        <div className="fixed right-20 top-1/2 transform -translate-y-1/2
-                      text-[#00FF8C] font-mono text-xl font-bold z-40
-                      bg-black/80 px-6 py-3 rounded-lg backdrop-blur-sm
-                      border border-[#00FF8C]/20 animate-pulse
-                      flex items-center gap-2">
-          <span>Click Anywhere to Start!</span>
-          <svg 
-            className="w-6 h-6 animate-bounce" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" 
-            />
-          </svg>
-        </div>
-      )}
-      <div className="relative z-5">
+
+      {/* Game toggle button */}
+      <button
+        onClick={toggleGame}
+        className="fixed top-4 left-4 z-40 
+                 text-[#00FF8C] font-mono font-bold
+                 bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm
+                 border border-[#00FF8C]/20 hover:bg-[#00FF8C]/10
+                 transition-all duration-300"
+      >
+        {showGame ? 'Hide Game' : 'Play Game'}
+      </button>
+
+      {/* Main content - Lower z-index */}
+      <div className="relative z-10">
         <div className='relative max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center'>
           <div className="relative p-8 rounded-2xl">
             <div className="relative bg-black/80 p-8 rounded-xl backdrop-blur-sm">
@@ -349,39 +352,55 @@ const Hero = ({ competitiveProgrammingRef }) => {
         </div>
       </div>
 
-      <Bird position={birdPos} rotation={birdRotation} />
-      {obstacles.map(obs => (
-        <React.Fragment key={obs.id}>
-          <Obstacle position={obs.x} height={obs.topHeight} isTop={true} />
-          <Obstacle position={obs.x} height={obs.bottomHeight} isTop={false} />
-        </React.Fragment>
-      ))}
-
-      <div className="fixed top-4 right-4 z-40 flex flex-col items-end gap-2">
-        <div className="text-[#00FF8C] font-mono text-xl font-bold
-                      bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm
-                      border border-[#00FF8C]/20">
-          <div>SCORE: {score}</div>
-          <div className="text-sm opacity-70 speed-indicator">
-            SPEED: {gameSpeed}x 
-            {score > 0 && score % 40 === 0 && ( 
-              <span className="ml-2 text-[#00FF8C] animate-pulse">↑</span>
-            )}
+      {/* Game elements */}
+      {showGame && (
+        <>
+          <div className="fixed top-4 right-4 z-40">
+            <div className="text-[#00FF8C] font-mono text-xl font-bold
+                         bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm
+                         border border-[#00FF8C]/20">
+              <div>SCORE: {score}</div>
+              <div className="text-sm opacity-70 speed-indicator">
+                SPEED: {gameSpeed}x 
+                {score > 0 && score % 40 === 0 && (
+                  <span className="ml-2 text-[#00FF8C] animate-pulse">↑</span>
+                )}
+              </div>
+              {score > 0 && (
+                <div className="text-xs opacity-50">
+                  Next speed boost: {40 - (score % 40)} points
+                </div>
+              )}
+            </div>
           </div>
-          {score > 0 && (
-            <div className="text-xs opacity-50">
-              Next speed boost: {40 - (score % 40)} points 
+
+          {!isGameActive && !showRestartMessage && (
+            <div className="fixed left-1/2 top-[15%] transform -translate-x-1/2
+                         text-[#00FF8C] font-mono text-2xl font-bold z-40
+                         bg-black/80 px-4 py-2 rounded-lg backdrop-blur-sm
+                         border border-[#00FF8C]/20 animate-pulse">
+              Click to Start!
             </div>
           )}
-        </div>
-        {showRestartMessage && (
-          <div className="text-[#00FF8C] font-mono text-xl font-bold
-                        bg-black/80 px-4 py-2 rounded-lg backdrop-blur-sm
-                        border border-[#00FF8C]/20 animate-pulse">
-            Click to Play Again!
-          </div>
-        )}
-      </div>
+
+          {showRestartMessage && (
+            <div className="fixed left-1/2 top-[15%] transform -translate-x-1/2
+                         text-[#00FF8C] font-mono text-2xl font-bold z-40
+                         bg-black/80 px-4 py-2 rounded-lg backdrop-blur-sm
+                         border border-[#00FF8C]/20 animate-pulse">
+              Click to Play Again!
+            </div>
+          )}
+
+          <Bird position={birdPos} rotation={birdRotation} />
+          {obstacles.map(obs => (
+            <React.Fragment key={obs.id}>
+              <Obstacle position={obs.x} height={obs.topHeight} isTop={true} />
+              <Obstacle position={obs.x} height={obs.bottomHeight} isTop={false} />
+            </React.Fragment>
+          ))}
+        </>
+      )}
 
       {clickEffects.map(effect => (
         <ClickEffect key={effect.id} x={effect.x} y={effect.y} />

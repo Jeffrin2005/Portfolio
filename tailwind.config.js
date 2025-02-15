@@ -141,7 +141,14 @@ module.exports = {
         'target-pulse': 'targetPulse 2s ease-in-out infinite',
         'ripple': 'ripple 1s ease-out forwards',
         'float-up': 'float-up 1s ease-out forwards'
-      }
+      },
+      screens: {
+        'xs': '320px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+      },
     },
   },
   plugins: [],
