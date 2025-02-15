@@ -288,7 +288,8 @@ const Hero = ({ competitiveProgrammingRef }) => {
 
   return (
     <div 
-      className='text-white bg-black relative min-h-screen overflow-hidden cursor-none'
+      className={`text-white bg-black relative min-h-screen overflow-hidden cursor-none
+                  ${showGame ? 'select-none' : ''}`}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={() => setIsAttacking(false)}
