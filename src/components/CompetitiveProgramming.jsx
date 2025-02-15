@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { FaCode } from 'react-icons/fa';
 import { SiCodeforces, SiLeetcode, SiCodechef } from 'react-icons/si';
 
 const CompetitiveProgramming = forwardRef((props, ref) => {
