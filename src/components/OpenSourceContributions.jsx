@@ -2,70 +2,34 @@ import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 
 const OpenSourceContributions = () => {
-  const pullRequests = [
+  
+  const organizations = [
+    
     {
-      organization: "OHC Network",
-      description: <b style={{ color: '#FFFFFF', fontSize: '18px' }}  >Fixed scroll issue in Shifting and Resource</b>, 
-      link: "https://github.com/ohcnetwork/care_fe/pull/9475",
-      techStack: ["React", "TypeScript"]
+      name: "layer5",
+      pullRequest: {
+        description: <b style={{ color: '#FFFFFF', fontSize: '18px' }}>Fixed Image Viewer Usability with Standard Navigation</b>, 
+        link: "https://github.com/layer5io/layer5/pull/6379",
+        techStack: ["Typescript", "React"]
+      },
+      issue: {
+        description: <b style={{ color: '#FFFFFF', fontSize: '18px' }}>Enhance Image Viewer Usability with Standard Navigation</b>,
+        link: "https://github.com/layer5io/layer5/issues/6378",
+        techStack: ["UI", "UX"]
+      }
     },
     {
-      organization: "OHC Network",
-      description: <b style={{ fontSize: '18px' }}  >Fixed Facility Organization Dropdown</b>,
-      link: "https://github.com/ohcnetwork/care_fe/pull/10104",
-      techStack: ["React", "TypeScript"]
-    },
-    {
-      organization: "OHC Network",
-      description: <b style={{ fontSize: '18px' }}  >Fixed Profile Syncing</b>,
-      link: "https://github.com/ohcnetwork/care_fe/pull/9994",
-      techStack: ["React", "JavaScript"]
-    },
-    {
-      organization: "OHC Network",
-      description: <b style={{ fontSize: '18px' }}  >Fixed Search Bar Reset</b>,
-      link: "https://github.com/ohcnetwork/care_fe/pull/9867",
-      techStack: ["React", "TypeScript"]
-    },
-    {
-      organization: "OHC Network",
-      description: <b style={{ fontSize: '18px' }}  >Fixed hover cursor in encounters</b>,
-      link: "https://github.com/ohcnetwork/care_fe/pull/9891",
-      techStack: ["React", "TypeScript"]
-    }
-  ];
-
-  const issues = [
-    {
-      organization: "OHC Network",
-      description: <b style={{ color: '#FFFFFF', fontSize: '18px' }}>Exploited XSS Vulnerability in Encounter Comment Section</b>,
-
-      link: "https://github.com/ohcnetwork/care_fe/issues/10430",
-      techStack: ["Security", "React"]
-    },
-    {
-      organization: "OHC Network",
-      description: <b style={{ fontSize: '18px' }}  >Enhance Facility Organization Dropdown Experience</b>,
-      link: "https://github.com/ohcnetwork/care_fe/issues/10060",
-      techStack: ["UX", "React"]
-    },
-    {
-      organization: "OHC Network",
-      description: <b style={{ fontSize: '18px' }}  >Profile Not Syncing with Sidebar Navigation</b>,
-      link: "https://github.com/ohcnetwork/care_fe/issues/9960",
-      techStack: ["React", "State Management"]
-    },
-    {
-      organization: "OHC Network",
-      description: <b style={{ fontSize: '18px' }}  >Search Bar Fails to Reset When Navigating Between Tabs</b>,
-      link: "https://github.com/ohcnetwork/care_fe/issues/9845",
-      techStack: ["React", "TypeScript"]
-    },
-    {
-      organization: "OHC Network",
-      description: <b style={{ fontSize: '18px' }}  >Cursor Issue: Pointer Active Throughout Encounter Section</b>,
-      link: "https://github.com/ohcnetwork/care_fe/issues/9886",
-      techStack: ["CSS", "UX"]
+      name: "shadcn-phone-input",
+      pullRequest: {
+        description: <b style={{ color: '#FFFFFF', fontSize: '18px' }}>Fix : Country selection does not clear previous search term</b>, 
+        link: "https://github.com/omeralpi/shadcn-phone-input/pull/84",
+        techStack: ["React", "Typescript"]
+      },
+      issue: {
+        description: <b style={{ color: '#FFFFFF', fontSize: '18px' }}>Country selection does not clear previous search terme</b>,
+        link: "https://github.com/omeralpi/shadcn-phone-input/issues/83",
+        techStack: ["Bug", "UX"]
+      }
     }
   ];
 
@@ -77,7 +41,7 @@ const OpenSourceContributions = () => {
       <div className='relative z-10'>
         <div className='flex items-center mb-3'>
           <FaGithub className='text-2xl text-gray-400 mr-3 group-hover:text-[#00ff00]' />
-          <h3 className='text-lg font-bold text-white'>{item.organization}</h3>
+          <h4 className='text-lg font-bold text-white'>{type}</h4>
         </div>
         <p className='text-gray-400 text-sm mb-3 leading-relaxed'>{item.description}</p>
         <div className='flex justify-between items-center'>
@@ -110,26 +74,27 @@ const OpenSourceContributions = () => {
           </h2>
           <div className='h-1 w-48 bg-gradient-to-r from-blue-500 via-[#00ff00] to-purple-500 mx-auto rounded-full'></div>
         </div>
-        <div className='grid md:grid-cols-2 gap-10'>
-          <div>
-            <h3 className='text-2xl font-bold text-white mb-6 flex items-center gap-3'>
-              <span className='h-8 w-1 bg-gradient-to-b from-blue-500 to-[#00ff00] rounded-full'></span>
-              Pull Requests
-            </h3>
-            {pullRequests.map((pr, index) => (
-              <ContributionCard key={index} item={pr} type="Pull Request" />
-            ))}
-          </div>
-          
-          <div>
-            <h3 className='text-2xl font-bold text-white mb-6 flex items-center gap-3'>
-              <span className='h-8 w-1 bg-gradient-to-b from-[#00ff00] to-purple-500 rounded-full'></span>
-              Issues
-            </h3>
-            {issues.map((issue, index) => (
-              <ContributionCard key={index} item={issue} type="Issue" />
-            ))}
-          </div>
+        <div className='space-y-12'>
+          {organizations.map((org, orgIndex) => (
+            <div key={orgIndex} className='space-y-6'>
+              {/* Organization Heading - Left Aligned */}
+              <div className='flex items-center gap-3 mb-6'>
+                <FaGithub className='text-3xl text-gray-400' />
+                <h3 className='text-3xl font-bold text-white'>{org.name}</h3>
+                <div className='h-1 w-32 bg-gradient-to-r from-blue-500 via-[#00ff00] to-purple-500 rounded-full ml-4'></div>
+              </div>
+              
+              {/* Pull Request and Issue in original positions */}
+              <div className='grid md:grid-cols-2 gap-8'>
+                <div>
+                  <ContributionCard item={org.pullRequest} type="Pull Request" />
+                </div>
+                <div>
+                  <ContributionCard item={org.issue} type="Issue" />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

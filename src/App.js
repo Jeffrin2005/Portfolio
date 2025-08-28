@@ -6,6 +6,7 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import OpenSourceContributions from "./components/OpenSourceContributions";
+import Experience from "./components/Experience";
 
 function App() {
   const competitiveProgrammingRef = useRef(null);
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <Hero competitiveProgrammingRef={competitiveProgrammingRef} />
       <CompetitiveProgramming ref={competitiveProgrammingRef} />
+      <Experience />
       <OpenSourceContributions />
       <Projects />
       <Skills />
